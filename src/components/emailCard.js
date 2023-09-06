@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { RxDragHandleDots2 } from "react-icons/rx";
-import { BsChevronCompactDown } from "react-icons/bs";
+import { BsChevronCompactDown, BsChevronCompactRight } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
 import { CgAttachment } from "react-icons/cg";
 import Tags from "./tags";
@@ -168,7 +168,11 @@ function EmailCard({
 							<BiTime color="#FACC14" size={20}></BiTime>
 							<span> 3 min</span>
 						</div>
-						<BsChevronCompactDown size={25}></BsChevronCompactDown>
+						{expandCard ? (
+							<BsChevronCompactDown size={25}></BsChevronCompactDown>
+						) : (
+							<BsChevronCompactRight size={25}></BsChevronCompactRight>
+						)}
 					</div>
 				</div>
 			</div>
