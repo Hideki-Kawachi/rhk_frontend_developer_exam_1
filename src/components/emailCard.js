@@ -20,13 +20,13 @@ function EmailCard({
 	const dateParts = date.split(" ");
 	const nameParts = senderName.split(" ");
 	const tagParts = tags.split(",");
+	const sentDate = new Date(date);
 	const [attachments, setAttachments] = useState(
 		Math.floor(Math.random() * (7 - 0)) + 0
 	);
 	const day = getDay();
 
 	function getDay() {
-		let sentDate = new Date(date);
 		let dayNum = sentDate.getDay();
 		if (dayNum === 0) {
 			return "Sun";
@@ -45,6 +45,39 @@ function EmailCard({
 		} else {
 			return "Error";
 		}
+	}
+
+	function getDate() {
+		let dateNum = sentDate.getMonth();
+		let fullMonth = "";
+		if (dateNum === 0) {
+			fullMonth = "January";
+		} else if (dateNum === 1) {
+			fullMonth = "February";
+		} else if (dateNum === 2) {
+			fullMonth = "March";
+		} else if (dateNum === 3) {
+			fullMonth = "April";
+		} else if (dateNum === 4) {
+			fullMonth = "May";
+		} else if (dateNum === 5) {
+			fullMonth = "June";
+		} else if (dateNum === 6) {
+			fullMonth = "July";
+		} else if (dateNum === 7) {
+			fullMonth = "August";
+		} else if (dateNum === 8) {
+			fullMonth = "September";
+		} else if (dateNum === 9) {
+			fullMonth = "October";
+		} else if (dateNum === 10) {
+			fullMonth = "November";
+		} else if (dateNum === 11) {
+			fullMonth = "December";
+		} else {
+			return "Error";
+		}
+		return fullMonth + " " + sentDate.getDay() + ", " + sentDate.getFullYear();
 	}
 
 	function updateSelectedEmails(isSelected) {
@@ -96,7 +129,7 @@ function EmailCard({
 									{senderEmail}
 									{">"}
 								</span>
-								<span>{date} at 4:04pm</span>
+								<span>{getDate()} at 4:04pm</span>
 								{attachments > 0 ? (
 									<>
 										<span className="text-gray-200">|</span>
