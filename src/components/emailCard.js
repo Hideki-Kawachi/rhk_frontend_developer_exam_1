@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { RxDragHandleDots2 } from "react-icons/rx";
 import { BsChevronCompactDown } from "react-icons/bs";
 import { BiTime } from "react-icons/bi";
+import { CgAttachment } from "react-icons/cg";
 import Tags from "./tags";
 
 function EmailCard({
@@ -19,6 +20,9 @@ function EmailCard({
 	const dateParts = date.split(" ");
 	const nameParts = senderName.split(" ");
 	const tagParts = tags.split(",");
+	const [attachments, setAttachments] = useState(
+		Math.floor(Math.random() * (7 - 0)) + 0
+	);
 	const day = getDay();
 
 	function getDay() {
@@ -83,7 +87,7 @@ function EmailCard({
 						</div>
 						<div className="flex flex-col ">
 							<span className="font-bold text-gray-600 text-xl">{subject}</span>
-							<div className="flex gap-1 text-gray-400">
+							<div className="flex gap-1 text-gray-400 items-center">
 								<span className="font-semibold text-gray-500">
 									{senderName}
 								</span>
@@ -93,6 +97,15 @@ function EmailCard({
 									{">"}
 								</span>
 								<span>{date} at 4:04pm</span>
+								{attachments > 0 ? (
+									<>
+										<span className="text-gray-200">|</span>
+										<CgAttachment color="#38BDF8"></CgAttachment>
+										<span className="text-sky-400">{attachments}</span>
+									</>
+								) : (
+									<></>
+								)}
 							</div>
 						</div>
 					</div>

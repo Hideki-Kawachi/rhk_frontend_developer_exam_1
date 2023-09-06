@@ -58,7 +58,7 @@ function App() {
 					<button className="flex items-center border-2 border-gray-600 rounded px-3 gap-2 bg-gray-100 text-gray-600">
 						MANAGE FILTERS <FiFilter></FiFilter>
 					</button>
-					<span className="border-l-2"></span>
+					<span className="border-l-2 border-gray-200 h-full"></span>
 					<button
 						className="flex items-center border-2 border-red-600 rounded px-3 gap-2 bg-red-100 text-red-600"
 						onClick={() => deleteSelected()}
