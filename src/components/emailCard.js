@@ -77,7 +77,7 @@ function EmailCard({
 		} else {
 			return "Error";
 		}
-		return fullMonth + " " + sentDate.getDay() + ", " + sentDate.getFullYear();
+		return fullMonth + " " + sentDate.getDate() + ", " + sentDate.getFullYear();
 	}
 
 	function updateSelectedEmails(isSelected) {
@@ -92,17 +92,17 @@ function EmailCard({
 	}
 
 	return (
-		<div className="border-2 border-gray-200 rounded-xl p-5">
-			<div className="flex align-middle items-center gap-4">
+		<div className="p-5 border-2 border-gray-200 rounded-xl">
+			<div className="flex items-center gap-4 align-middle">
 				<RxDragHandleDots2 size={20} color="#6B7280"></RxDragHandleDots2>
 				<input
 					type="checkbox"
-					className="h-5 w-5 cursor-pointer"
+					className="w-5 h-5 cursor-pointer"
 					onClick={(e) => updateSelectedEmails(e.target.checked)}
 				></input>
 				<div className="h-5 aspect-square bg-green-600 rounded-[50%]"></div>
-				<div className="flex border-2 border-gray-200 bg-gray-50 flex-col justify-center items-center p-1 rounded-md aspect-square h-14">
-					<span className="font-bold text-gray-600 text-lg">
+				<div className="flex flex-col items-center justify-center p-1 border-2 border-gray-200 rounded-md bg-gray-50 aspect-square h-14">
+					<span className="text-lg font-bold text-gray-600">
 						{dateParts[1].slice(0, -1)}
 					</span>
 					<span className="text-gray-500 font-semibold text-xs top-[-5px] relative">
@@ -110,17 +110,17 @@ function EmailCard({
 					</span>
 				</div>
 				<div
-					className="flex justify-between items-center w-full cursor-pointer"
+					className="flex items-center justify-between w-full cursor-pointer"
 					onClick={() => setExpandCard(!expandCard)}
 				>
-					<div className="flex align-middle items-center gap-4">
+					<div className="flex items-center gap-4 align-middle">
 						<div className="h-10 aspect-square rounded-[50%] bg-gray-500 flex items-center justify-center font-bold text-white">
 							{nameParts[0].charAt(0)}
 							{nameParts[nameParts.length - 1].charAt(0)}
 						</div>
 						<div className="flex flex-col ">
-							<span className="font-bold text-gray-600 text-xl">{subject}</span>
-							<div className="flex gap-1 text-gray-400 items-center">
+							<span className="text-xl font-bold text-gray-600">{subject}</span>
+							<div className="flex items-center gap-1 text-gray-400">
 								<span className="font-semibold text-gray-500">
 									{senderName}
 								</span>
@@ -142,16 +142,16 @@ function EmailCard({
 							</div>
 						</div>
 					</div>
-					<div className="flex justify-center items-center gap-4">
+					<div className="flex items-center justify-center gap-4">
 						{expandCard ? (
 							<></>
 						) : (
-							<div className="w-28 gap-1 flex justify-end flex-wrap">
+							<div className="flex flex-wrap justify-end gap-1 w-28">
 								{tagParts.length > 2 ? (
 									<>
 										<Tags tag={tagParts[0]}></Tags>
 										<Tags tag={tagParts[1]}></Tags>
-										<span className="text-xs p-1 bg-sky-50 text-sky-400 font-extrabold rounded border-2 border-sky-400">
+										<span className="p-1 text-xs font-extrabold border-2 rounded bg-sky-50 text-sky-400 border-sky-400">
 											{tagParts.length - 2}+
 										</span>
 									</>
@@ -164,7 +164,7 @@ function EmailCard({
 								)}
 							</div>
 						)}
-						<div className="text-xs flex justify-center items-center p-1 bg-yellow-50 rounded text-yellow-400">
+						<div className="flex items-center justify-center p-1 text-xs text-yellow-400 rounded bg-yellow-50">
 							<BiTime color="#FACC14" size={20}></BiTime>
 							<span> 3 min</span>
 						</div>
@@ -177,25 +177,25 @@ function EmailCard({
 				</div>
 			</div>
 			{expandCard ? (
-				<div className="m-2 border-t-2 mt-5 py-5 flex flex-col gap-2">
+				<div className="flex flex-col gap-2 py-5 m-2 mt-5 border-t-2">
 					<div className="flex justify-between w-full">
 						<div className="flex flex-col">
-							<span className="text-gray-600 font-bold">{senderName}</span>
+							<span className="font-bold text-gray-600">{senderName}</span>
 							<span className="text-gray-400">{date} at 4:04pm</span>
 						</div>
-						<div className="flex h-min gap-2 max-w-lg flex-wrap">
+						<div className="flex flex-wrap max-w-lg gap-2 h-min">
 							{tagParts.map((tag) => (
 								<Tags key={tag} tag={tag}></Tags>
 							))}
 						</div>
 					</div>
 					<p className="text-gray-800">{content}</p>
-					<div className="flex flex-col text-gray-800 mt-5">
+					<div className="flex flex-col mt-5 text-gray-800">
 						<span>------Forwarded message------</span>
 						<span>
 							From: <b>{senderName}</b>
 							{" <"}
-							<a href={senderEmail} className="text-blue-500 font-semibold">
+							<a href={senderEmail} className="font-semibold text-blue-500">
 								{senderEmail}
 							</a>
 							{">"}
@@ -208,7 +208,7 @@ function EmailCard({
 							To: Isabel Bowen {"<"}
 							<a
 								href="sbtest.isabel@gmail.com"
-								className="text-blue-500 font-semibold"
+								className="font-semibold text-blue-500"
 							>
 								sbtest.isabel@gmail.com
 							</a>
